@@ -276,6 +276,31 @@
   .quiz-opt.wrong   { background: var(--coral-lt); border-color: var(--coral); color: #8b2500; }
   .quiz-feedback { margin-top: .6rem; font-size: .9rem; font-weight: 700; min-height: 1.4em; }
 
+  /* ── SCENARIO BOX ── */
+  .scenario-box {
+    border-radius: 0 0 0 0;
+    border: 2px solid #eee;
+    border-top: none;
+    padding: 1.3rem 1.6rem;
+    font-size: .95rem;
+    line-height: 1.75;
+    color: var(--mid);
+  }
+  .scenario-box .scenario-label {
+    font-family: 'Space Mono', monospace; font-size: .72rem;
+    font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    display: inline-block; padding: .2rem .7rem; border-radius: 4px;
+    margin-bottom: .75rem;
+  }
+  .scenario-box p { margin-bottom: .6rem; }
+  .scenario-box p:last-child { margin-bottom: 0; }
+  .case-1 .scenario-box { background: #fff9fc; border-left: 4px solid var(--pink); }
+  .case-1 .scenario-label { background: var(--pink-lt); color: var(--pink); }
+  .case-2 .scenario-box { background: #faf7ff; border-left: 4px solid var(--lilac); }
+  .case-2 .scenario-label { background: var(--lilac-lt); color: #7c5ccc; }
+  .case-3 .scenario-box { background: #f5fffe; border-left: 4px solid var(--mint); }
+  .case-3 .scenario-label { background: var(--mint-lt); color: #2a9d96; }
+
   /* ── QUESTION BOX ── */
   .question-box {
     background: var(--dark); color: #fff;
@@ -336,6 +361,11 @@
       <h2>Hello Kitty's Bakery & Keroppi's PondTech</h2>
       <p>Production Theory · Cost Curves · Returns to Scale</p>
     </div>
+  </div>
+  <div class="scenario-box">
+    <span class="scenario-label">📖 Case Study</span>
+    <p>Hello Kitty runs a successful bakery in Sanrio Town. Lately, demand for her signature strawberry shortcakes has plummeted her into a stressful situation. To keep up, she keeps adding bakers to her tiny kitchen. At first, two bakers made things twice as fast, but by the time she hired a fifth baker, they were bumping into each other, waiting for the oven, and total output barely nudged.</p>
+    <p>Meanwhile, Keroppi is expanding his lilypad delivery drone business, PondTech. He noticed that as he grew from a tiny backyard operation to a massive automated warehouse, his cost per drone dropped dramatically because he could buy microchips in bulk and use specialized assembly frogs. However, he worries that if he grows too large, management communication will break down and costs might start creeping back up.</p>
   </div>
 
   <!-- Q1 -->
@@ -507,6 +537,11 @@
       <p>Market Structures · Monopoly · Behavioral Economics</p>
     </div>
   </div>
+  <div class="scenario-box">
+    <span class="scenario-label">📖 Case Study</span>
+    <p>In Sanrio Town, the market for almond pound cakes is perfectly competitive — hundreds of nearly identical bakeries exist, and prices are driven down to the bare minimum. My Melody, however, has managed to secure a legal monopoly on the town's unique pink tea leaves, allowing her to be the sole provider of "Melody Tea." Because she has no competition, she restricts the supply of tea and charges a premium price.</p>
+    <p>Across town, Kuromi runs a digital ride-sharing app called BakuGo. To boost sales, Kuromi uses behavioral economics tricks. Instead of telling users they will save $5 by booking early, her app alerts them: "Don't lose your $5 early-bird discount!" She also uses an algorithm that tracks past rides to offer personalized "frequently traveled route" bundles right on the home screen.</p>
+  </div>
 
   <!-- Q4 -->
   <div class="q-block">
@@ -645,6 +680,12 @@
       <h2>Cinnamoroll's Global Café & Pompompurin</h2>
       <p>Macroeconomics · Trade · Circular Economy</p>
     </div>
+  </div>
+  <div class="scenario-box">
+    <span class="scenario-label">📖 Case Study</span>
+    <p>Cinnamoroll operates a global café empire. His main offices are currently facing a brutal macroeconomic crisis: the economy is stagnant, unemployment is creeping up, yet prices for espresso beans are soaring (high inflation), and the local currency is losing value. The Central Bank is debating whether fighting unemployment will accidentally make inflation worse.</p>
+    <p>To make matters more complex, Pompompurin, Cinnamoroll's chief financial analyst, is trying to predict if a full-scale recession is coming by tracking things like new building permits versus the unemployment rate.</p>
+    <p>On the trade front, Cinnamoroll's café relies on trade between two regions: Fluffy Land (great at making premium mugs) and Berry Valley (great at growing strawberries). Lastly, to protect the environment, Cinnamoroll wants to shift his cafés from a "take-make-waste" model to one where coffee grounds are turned into fertilizer and cups are strictly reusable.</p>
   </div>
 
   <!-- Q6 -->
