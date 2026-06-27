@@ -276,6 +276,23 @@
   .quiz-opt.wrong   { background: var(--coral-lt); border-color: var(--coral); color: #8b2500; }
   .quiz-feedback { margin-top: .6rem; font-size: .9rem; font-weight: 700; min-height: 1.4em; }
 
+  /* ── QUESTION BOX ── */
+  .question-box {
+    background: var(--dark); color: #fff;
+    border-radius: 12px; padding: 1rem 1.2rem;
+    margin: 1rem 0 1.2rem; font-size: .95rem;
+    line-height: 1.65;
+  }
+  .question-box .q-label {
+    font-family: 'Space Mono', monospace; font-size: .72rem;
+    font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--lemon); display: block; margin-bottom: .5rem;
+  }
+  .question-box p { margin-bottom: .55rem; }
+  .question-box p:last-child { margin-bottom: 0; }
+  .question-box ul { padding-left: 1.2rem; }
+  .question-box li { margin-bottom: .3rem; }
+
   /* ── SEARCH HIGHLIGHT ── */
   mark { background: var(--lemon); padding: 0 2px; border-radius: 3px; }
 
@@ -329,6 +346,10 @@
       <span class="q-arrow">▼</span>
     </div>
     <div class="q-body">
+      <div class="question-box">
+        <span class="q-label">📝 Question 1</span>
+        <p>Identify the economic law Hello Kitty is experiencing in her kitchen. Define it and create a quick, hypothetical production schedule (showing workers and marginal product) that illustrates her dilemma.</p>
+      </div>
       <div class="answer-section">
         <span class="answer-label pink-label">📖 Definition</span>
         <div class="info-box pink">
@@ -378,6 +399,17 @@
       <span class="q-arrow">▼</span>
     </div>
     <div class="q-body">
+      <div class="question-box">
+        <span class="q-label">📝 Question 2</span>
+        <p>Hello Kitty's current daily cost structure for cakes is shown below. Calculate the Average Cost (AC) and Marginal Cost (MC) for outputs 1 through 4. Interpret what happens to MC at output 4.</p>
+        <ul>
+          <li>Output 0: TC = Rs. 100</li>
+          <li>Output 1: TC = Rs. 150</li>
+          <li>Output 2: TC = Rs. 180</li>
+          <li>Output 3: TC = Rs. 210</li>
+          <li>Output 4: TC = Rs. 250</li>
+        </ul>
+      </div>
       <div class="answer-section">
         <span class="answer-label pink-label">📐 Formulas</span><br>
         <span class="formula">AC = TC ÷ Output</span>&nbsp;&nbsp;
@@ -424,6 +456,10 @@
       <span class="q-arrow">▼</span>
     </div>
     <div class="q-body">
+      <div class="question-box">
+        <span class="q-label">📝 Question 3</span>
+        <p>What phenomenon did Keroppi experience when his per-unit costs dropped? Name his specific modern industry example. Then, using Keroppi's long-run journey, name and briefly describe the three stages of returns to scale shown by a long-run average cost curve.</p>
+      </div>
       <div class="answer-section">
         <span class="answer-label pink-label">🏭 What Keroppi Experienced</span>
         <div class="info-box pink">
@@ -480,6 +516,10 @@
       <span class="q-arrow">▼</span>
     </div>
     <div class="q-body">
+      <div class="question-box">
+        <span class="q-label">📝 Question 4</span>
+        <p>Compare My Melody's "Melody Tea" monopoly with the perfectly competitive market for almond pound cakes. List the differences between them in terms of Price, Output, and Welfare (deadweight loss/efficiency).</p>
+      </div>
       <div class="answer-section">
         <div class="compare-grid">
           <div class="compare-card left">
@@ -526,6 +566,10 @@
       <span class="q-arrow">▼</span>
     </div>
     <div class="q-body">
+      <div class="question-box">
+        <span class="q-label">📝 Question 5a</span>
+        <p>Name an industry in the real world that exhibits monopolistic competition. List two of its main features that separate it from a pure monopoly.</p>
+      </div>
       <div class="answer-section">
         <span class="answer-label lilac-label">🌍 Real-World Example</span>
         <div class="info-box lilac">
@@ -554,6 +598,10 @@
       <span class="q-arrow">▼</span>
     </div>
     <div class="q-body">
+      <div class="question-box">
+        <span class="q-label">📝 Question 5b</span>
+        <p>Define behavioral economics. Identify the specific behavioral bias Kuromi is exploiting when she phrases the discount as "not losing $5." Finally, explain how BakuGo uses digital consumer behavior to increase its sales.</p>
+      </div>
       <div class="answer-section">
         <span class="answer-label coral-label">🧠 What is Behavioral Economics?</span>
         <div class="info-box coral">
@@ -607,6 +655,10 @@
       <span class="q-arrow">▼</span>
     </div>
     <div class="q-body">
+      <div class="question-box">
+        <span class="q-label">📝 Question 6</span>
+        <p>What economic curve describes the trade-off Cinnamoroll's Central Bank is worried about regarding inflation and unemployment? In the harsh scenario Cinnamoroll's economy faces (high inflation, low growth, rising debt), what precise combination of fiscal and monetary policies should be adopted to regain growth safely?</p>
+      </div>
       <div class="answer-section">
         <span class="answer-label mint-label">📉 The Economic Curve</span>
         <div class="info-box mint">
@@ -650,6 +702,10 @@
       <span class="q-arrow">▼</span>
     </div>
     <div class="q-body">
+      <div class="question-box">
+        <span class="q-label">📝 Question 7</span>
+        <p>Pompompurin is looking at economic indicators. Explain the difference between a leading indicator and a lagging indicator, classifying building permits and the unemployment rate into their correct categories.</p>
+      </div>
       <div class="answer-section">
         <div class="compare-grid">
           <div class="compare-card left">
@@ -691,6 +747,11 @@
       <span class="q-arrow">▼</span>
     </div>
     <div class="q-body">
+      <div class="question-box">
+        <span class="q-label">📝 Question 8</span>
+        <p><strong>Part A:</strong> Explain how comparative advantage allows Fluffy Land and Berry Valley to gain from trade even if one land is naturally better at producing both goods.</p>
+        <p><strong>Part B:</strong> Briefly explain how a sudden depreciation of Cinnamoroll's local currency will affect his café's international trade balance and profitability.</p>
+      </div>
       <div class="answer-section">
         <span class="answer-label mint-label">🌍 Part A: Comparative Advantage (Fluffy Land & Berry Valley)</span>
         <div class="info-box mint">
@@ -743,6 +804,10 @@
       <span class="q-arrow">▼</span>
     </div>
     <div class="q-body">
+      <div class="question-box">
+        <span class="q-label">📝 Question 9</span>
+        <p>Describe the role of the circular economy principles Cinnamoroll wants to implement in promoting environmental sustainability. His plan includes turning coffee grounds into fertilizer and switching all cups to reusable ones.</p>
+      </div>
       <div class="answer-section">
         <span class="answer-label mint-label">♻️ What is the Circular Economy?</span>
         <div class="info-box mint">
