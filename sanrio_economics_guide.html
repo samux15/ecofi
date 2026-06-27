@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sanrio Economics — Finals Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink:    #FF6B9D;
+    --pink-lt: #FFD6E8;
+    --mint:    #5ECEC8;
+    --mint-lt: #D0F5F3;
+    --lemon:   #FFE566;
+    --lemon-lt:#FFFBE0;
+    --lilac:   #C4A8FF;
+    --lilac-lt:#EDE5FF;
+    --sky:     #5BA4F5;
+    --sky-lt:  #D9EEFF;
+    --coral:   #FF8C6B;
+    --coral-lt:#FFE5DD;
+    --dark:    #1A1A2E;
+    --mid:     #3D3D5C;
+    --soft:    #6B6B8A;
+    --white:   #FFFFFF;
+    --cream:   #FDFAFF;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: linear-gradient(135deg, #FF6B9D 0%, #C4A8FF 50%, #5ECEC8 100%);
+    padding: 3rem 2rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '🎀 🐸 ☁️ 🍮 🎵 🐱 🌸';
+    position: absolute; top: .5rem; left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.4rem; letter-spacing: .4rem; opacity: .45;
+    white-space: nowrap;
+  }
+  header h1 {
+    font-size: clamp(1.8rem, 5vw, 3rem);
+    font-weight: 900; color: #fff;
+    text-shadow: 3px 3px 0 rgba(0,0,0,.15);
+    margin-bottom: .4rem;
+  }
+  header p {
+    color: rgba(255,255,255,.9);
+    font-size: 1.05rem; font-weight: 600;
+  }
+
+  /* ── SEARCH BAR ── */
+  .search-wrap {
+    max-width: 680px; margin: -1.4rem auto 0; padding: 0 1.5rem;
+    position: relative; z-index: 10;
+  }
+  .search-wrap input {
+    width: 100%; padding: .85rem 1.2rem .85rem 3rem;
+    border: 2.5px solid var(--pink); border-radius: 50px;
+    font-family: 'Nunito', sans-serif; font-size: 1rem;
+    background: #fff; outline: none;
+    box-shadow: 0 4px 18px rgba(255,107,157,.2);
+    transition: box-shadow .2s;
+  }
+  .search-wrap input:focus { box-shadow: 0 4px 24px rgba(255,107,157,.4); }
+  .search-wrap .search-icon {
+    position: absolute; left: 2.4rem; top: 50%; transform: translateY(-50%);
+    font-size: 1.1rem; pointer-events: none;
+  }
+
+  /* ── NAV TABS ── */
+  .tabs {
+    display: flex; flex-wrap: wrap; gap: .5rem;
+    max-width: 900px; margin: 2rem auto 0; padding: 0 1.5rem;
+  }
+  .tab-btn {
+    padding: .45rem 1rem; border-radius: 50px; border: 2px solid transparent;
+    font-family: 'Nunito', sans-serif; font-weight: 700; font-size: .85rem;
+    cursor: pointer; transition: all .18s;
+  }
+  .tab-btn.active, .tab-btn:hover { color: #fff; transform: translateY(-1px); }
+
+  .tab-btn[data-case="1"] { background: var(--pink-lt); color: var(--pink); border-color: var(--pink); }
+  .tab-btn[data-case="1"].active, .tab-btn[data-case="1"]:hover { background: var(--pink); }
+  .tab-btn[data-case="2"] { background: var(--lilac-lt); color: #7c5ccc; border-color: var(--lilac); }
+  .tab-btn[data-case="2"].active, .tab-btn[data-case="2"]:hover { background: var(--lilac); }
+  .tab-btn[data-case="3"] { background: var(--mint-lt); color: #2a9d96; border-color: var(--mint); }
+  .tab-btn[data-case="3"].active, .tab-btn[data-case="3"]:hover { background: var(--mint); }
+  .tab-btn[data-case="all"] { background: var(--lemon-lt); color: #a0860a; border-color: var(--lemon); }
+  .tab-btn[data-case="all"].active, .tab-btn[data-case="all"]:hover { background: var(--lemon); color: #6b5800; }
+
+  /* ── CONTENT ── */
+  .content { max-width: 900px; margin: 2rem auto 4rem; padding: 0 1.5rem; }
+
+  /* ── CASE SECTION ── */
+  .case-section { margin-bottom: 2rem; }
+  .case-header {
+    border-radius: 18px 18px 0 0;
+    padding: 1.2rem 1.6rem;
+    display: flex; align-items: center; gap: .9rem;
+  }
+  .case-header .emoji { font-size: 2rem; }
+  .case-header h2 { font-size: 1.25rem; font-weight: 900; color: #fff; line-height: 1.3; }
+  .case-header p { font-size: .88rem; color: rgba(255,255,255,.85); font-weight: 600; margin-top: .1rem; }
+
+  .case-1 .case-header { background: linear-gradient(90deg, #FF6B9D, #ff9fbe); }
+  .case-2 .case-header { background: linear-gradient(90deg, #9B59B6, #C4A8FF); }
+  .case-3 .case-header { background: linear-gradient(90deg, #2a9d96, #5ECEC8); }
+
+  /* ── Q BLOCK ── */
+  .q-block {
+    border: 2px solid #eee;
+    border-top: none;
+    border-radius: 0 0 0 0;
+    overflow: hidden;
+  }
+  .q-block:last-child { border-radius: 0 0 18px 18px; }
+
+  .q-header {
+    display: flex; align-items: center; gap: 1rem;
+    padding: 1rem 1.4rem; cursor: pointer;
+    transition: background .18s;
+    user-select: none;
+  }
+  .q-header:hover { background: #fafafa; }
+
+  .q-num {
+    width: 36px; height: 36px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Mono', monospace; font-weight: 700;
+    font-size: .85rem; flex-shrink: 0;
+  }
+  .case-1 .q-num { background: var(--pink-lt); color: var(--pink); }
+  .case-2 .q-num { background: var(--lilac-lt); color: #7c5ccc; }
+  .case-3 .q-num { background: var(--mint-lt); color: #2a9d96; }
+
+  .q-title { font-weight: 700; font-size: 1rem; flex: 1; }
+  .q-arrow { font-size: 1.1rem; transition: transform .25s; margin-left: auto; }
+  .q-header.open .q-arrow { transform: rotate(180deg); }
+
+  .q-body {
+    display: none;
+    padding: 0 1.4rem 1.4rem 1.4rem;
+    border-top: 2px dashed #f0f0f0;
+  }
+  .q-body.open { display: block; }
+
+  /* ── ANSWER PARTS ── */
+  .answer-section { margin-top: 1.1rem; }
+  .answer-label {
+    font-family: 'Space Mono', monospace; font-size: .75rem;
+    font-weight: 700; letter-spacing: .05em;
+    text-transform: uppercase; margin-bottom: .4rem;
+    display: inline-block; padding: .2rem .6rem; border-radius: 4px;
+  }
+  .pink-label  { background: var(--pink-lt);  color: var(--pink); }
+  .mint-label  { background: var(--mint-lt);  color: #2a9d96; }
+  .lilac-label { background: var(--lilac-lt); color: #7c5ccc; }
+  .sky-label   { background: var(--sky-lt);   color: var(--sky); }
+  .coral-label { background: var(--coral-lt); color: #cc5500; }
+  .lemon-label { background: var(--lemon-lt); color: #8a6f00; }
+
+  .answer-text { font-size: .97rem; color: var(--mid); margin-bottom: .9rem; }
+
+  /* ── TABLE ── */
+  .data-table {
+    width: 100%; border-collapse: collapse;
+    font-size: .9rem; border-radius: 12px; overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0,0,0,.07);
+    margin: .8rem 0;
+  }
+  .data-table th {
+    background: var(--dark); color: #fff;
+    padding: .6rem .9rem; text-align: center;
+    font-family: 'Space Mono', monospace; font-size: .8rem;
+  }
+  .data-table td {
+    padding: .55rem .9rem; text-align: center;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:nth-child(even) td { background: #fafafa; }
+  .data-table .rising { color: #e53935; font-weight: 700; }
+  .data-table .key    { background: var(--lemon-lt) !important; font-weight: 700; }
+
+  /* ── HIGHLIGHT BOXES ── */
+  .info-box {
+    border-radius: 12px; padding: 1rem 1.2rem; margin: .8rem 0;
+    font-size: .93rem;
+  }
+  .info-box.pink   { background: var(--pink-lt);  border-left: 4px solid var(--pink); }
+  .info-box.mint   { background: var(--mint-lt);  border-left: 4px solid var(--mint); }
+  .info-box.lilac  { background: var(--lilac-lt); border-left: 4px solid var(--lilac); }
+  .info-box.lemon  { background: var(--lemon-lt); border-left: 4px solid var(--lemon); }
+  .info-box.coral  { background: var(--coral-lt); border-left: 4px solid var(--coral); }
+  .info-box.sky    { background: var(--sky-lt);   border-left: 4px solid var(--sky); }
+  .info-box strong { display: block; margin-bottom: .3rem; }
+
+  /* ── KEY TERM PILL ── */
+  .pill {
+    display: inline-block; padding: .15rem .7rem;
+    border-radius: 50px; font-weight: 700; font-size: .85rem; margin: .15rem .1rem;
+  }
+  .pill.pink   { background: var(--pink-lt);  color: var(--pink); }
+  .pill.lilac  { background: var(--lilac-lt); color: #7c5ccc; }
+  .pill.mint   { background: var(--mint-lt);  color: #2a9d96; }
+  .pill.sky    { background: var(--sky-lt);   color: var(--sky); }
+  .pill.lemon  { background: var(--lemon-lt); color: #8a6f00; }
+  .pill.coral  { background: var(--coral-lt); color: #cc5500; }
+
+  /* ── COMPARE GRID ── */
+  .compare-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: .8rem; margin: .8rem 0;
+  }
+  .compare-card {
+    border-radius: 12px; padding: 1rem 1.1rem;
+    font-size: .9rem;
+  }
+  .compare-card h4 { font-size: 1rem; margin-bottom: .5rem; }
+  .compare-card ul { padding-left: 1.1rem; }
+  .compare-card li { margin-bottom: .25rem; }
+  .compare-card.left  { background: var(--pink-lt); }
+  .compare-card.right { background: var(--lilac-lt); }
+
+  /* ── SOURCES ── */
+  .sources-bar {
+    max-width: 900px; margin: 0 auto 2rem; padding: 0 1.5rem;
+  }
+  .sources-bar details {
+    background: #fff; border: 2px solid var(--mint-lt);
+    border-radius: 14px; padding: 1rem 1.2rem;
+  }
+  .sources-bar summary {
+    cursor: pointer; font-weight: 700; color: var(--mint);
+    font-size: .95rem;
+  }
+  .sources-bar a {
+    display: block; font-size: .83rem; color: var(--sky);
+    text-decoration: none; margin-top: .4rem;
+  }
+  .sources-bar a:hover { text-decoration: underline; }
+
+  /* ── FORMULA ── */
+  .formula {
+    font-family: 'Space Mono', monospace;
+    background: var(--dark); color: var(--lemon);
+    padding: .5rem 1rem; border-radius: 8px;
+    font-size: .9rem; display: inline-block; margin: .4rem 0;
+  }
+
+  /* ── QUICK QUIZ ── */
+  .quiz-area { margin-top: 1.2rem; }
+  .quiz-q { font-weight: 700; margin-bottom: .5rem; font-size: .97rem; }
+  .quiz-options { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .quiz-opt {
+    padding: .45rem 1.1rem; border-radius: 50px;
+    border: 2px solid #ddd; background: #fff;
+    font-family: 'Nunito', sans-serif; font-size: .9rem;
+    cursor: pointer; transition: all .18s;
+  }
+  .quiz-opt:hover { border-color: var(--pink); background: var(--pink-lt); }
+  .quiz-opt.correct { background: var(--mint-lt); border-color: var(--mint); color: #1a6b67; font-weight: 700; }
+  .quiz-opt.wrong   { background: var(--coral-lt); border-color: var(--coral); color: #8b2500; }
+  .quiz-feedback { margin-top: .6rem; font-size: .9rem; font-weight: 700; min-height: 1.4em; }
+
+  /* ── SEARCH HIGHLIGHT ── */
+  mark { background: var(--lemon); padding: 0 2px; border-radius: 3px; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:600px){
+    .compare-grid { grid-template-columns: 1fr; }
+    .tabs { gap: .35rem; }
+    .tab-btn { font-size: .78rem; padding: .38rem .8rem; }
+  }
+
+  /* hidden by filter */
+  .case-section.hidden { display: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🌸 Sanrio Economics 🌸</h1>
+  <p>Finals Study Guide · All 9 Questions · With Explainer & Mini-Quiz</p>
+</header>
+
+<div class="search-wrap">
+  <span class="search-icon">🔍</span>
+  <input type="text" id="searchInput" placeholder="Search terms… e.g. marginal cost, loss aversion…">
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" data-case="all" onclick="filterCase('all',this)">📚 All Topics</button>
+  <button class="tab-btn" data-case="1" onclick="filterCase('1',this)">🍰 Hello Kitty & Keroppi</button>
+  <button class="tab-btn" data-case="2" onclick="filterCase('2',this)">🫖 My Melody & Kuromi</button>
+  <button class="tab-btn" data-case="3" onclick="filterCase('3',this)">☁️ Cinnamoroll & Pompom</button>
+</div>
+
+<div class="content">
+
+<!-- ═══════════════════════════════════════════════════ CASE 1 -->
+<div class="case-section case-1" data-case="1">
+  <div class="case-header">
+    <span class="emoji">🍰🐸</span>
+    <div>
+      <h2>Hello Kitty's Bakery & Keroppi's PondTech</h2>
+      <p>Production Theory · Cost Curves · Returns to Scale</p>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <div class="q-num">Q1</div>
+      <div class="q-title">Law of Diminishing Returns — Hello Kitty's Kitchen Chaos</div>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-section">
+        <span class="answer-label pink-label">📖 Definition</span>
+        <div class="info-box pink">
+          <strong>Law of Diminishing Marginal Returns</strong>
+          As more units of a <em>variable input</em> (e.g. labour) are added to a <em>fixed input</em> (e.g. Hello Kitty's single oven), the <strong>marginal product of each additional worker eventually falls</strong>. This operates only in the <strong>short run</strong>, where at least one factor is fixed.
+        </div>
+        <div class="answer-text">
+          Hello Kitty's kitchen has a fixed number of ovens. The first few bakers specialise and boost output rapidly. But by Baker 5, they bump into each other, share the same oven, and barely add any cakes — this is diminishing returns in action.
+        </div>
+        <span class="answer-label mint-label">📊 Production Schedule</span>
+        <table class="data-table">
+          <thead>
+            <tr><th>Workers</th><th>Total Output (cakes/day)</th><th>Marginal Product (MP)</th><th>Stage</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>0</td><td>—</td><td></td></tr>
+            <tr><td>1</td><td>10</td><td>10</td><td>Increasing returns</td></tr>
+            <tr><td>2</td><td>22</td><td>12</td><td>Increasing returns</td></tr>
+            <tr><td>3</td><td>30</td><td>8</td><td class="rising">Diminishing returns begin ⚠️</td></tr>
+            <tr><td>4</td><td>36</td><td>6</td><td class="rising">Diminishing returns</td></tr>
+            <tr><td class="key">5</td><td class="key">39</td><td class="key">3</td><td class="key rising">Severe diminishing returns</td></tr>
+          </tbody>
+        </table>
+        <div class="info-box lemon">
+          <strong>🔑 Key Insight</strong>
+          MP <em>rises</em> initially (workers specialise), then <em>falls</em> as the fixed oven becomes a bottleneck. Output still increases — just more and more slowly.
+        </div>
+      </div>
+      <!-- mini-quiz -->
+      <div class="quiz-area">
+        <div class="quiz-q">⚡ Quick Check: When does the law of diminishing returns apply?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this,'wrong')">A) Long run, all inputs variable</button>
+          <button class="quiz-opt" onclick="answer(this,'correct')">B) Short run, at least one input fixed</button>
+          <button class="quiz-opt" onclick="answer(this,'wrong')">C) Only when output falls</button>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <div class="q-num">Q2</div>
+      <div class="q-title">Average Cost & Marginal Cost — Hello Kitty's Cost Table</div>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-section">
+        <span class="answer-label pink-label">📐 Formulas</span><br>
+        <span class="formula">AC = TC ÷ Output</span>&nbsp;&nbsp;
+        <span class="formula">MC = ΔTC ÷ ΔOutput</span>
+        <br><br>
+        <span class="answer-label mint-label">📊 Completed Table</span>
+        <table class="data-table">
+          <thead>
+            <tr><th>Output (Q)</th><th>TC (Rs.)</th><th>AC = TC/Q</th><th>MC = ΔTC/ΔQ</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>0</td><td>100</td><td>—</td><td>—</td></tr>
+            <tr><td>1</td><td>150</td><td>150.00</td><td>50</td></tr>
+            <tr><td>2</td><td>180</td><td>90.00</td><td>30</td></tr>
+            <tr><td>3</td><td>210</td><td>70.00</td><td>30</td></tr>
+            <tr class="key"><td>4</td><td>250</td><td>62.50</td><td class="rising">40 ↑</td></tr>
+          </tbody>
+        </table>
+        <div class="info-box coral">
+          <strong>⚠️ What happens to MC at Output 4?</strong>
+          MC rises from Rs. 30 to Rs. 40. This signals that <strong>diminishing returns are setting in</strong> — each extra cake is costing Hello Kitty more to produce. The oven (fixed capital) is becoming a bottleneck. Rising MC will eventually push AC up too, giving the classic <strong>U-shaped cost curve</strong>.
+        </div>
+        <div class="info-box lemon">
+          Rs. 100 at Q=0 is the <strong>Fixed Cost</strong> (rent, equipment). It doesn't change with output — that's why it exists even when nothing is baked.
+        </div>
+      </div>
+      <div class="quiz-area">
+        <div class="quiz-q">⚡ If TC goes from 210 to 280 when output rises from 3 to 4, what is MC?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this,'wrong')">A) Rs. 35</button>
+          <button class="quiz-opt" onclick="answer(this,'wrong')">B) Rs. 56</button>
+          <button class="quiz-opt" onclick="answer(this,'correct')">C) Rs. 70</button>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <div class="q-num">Q3</div>
+      <div class="q-title">Economies of Scale & Returns to Scale — Keroppi's PondTech</div>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-section">
+        <span class="answer-label pink-label">🏭 What Keroppi Experienced</span>
+        <div class="info-box pink">
+          Keroppi experienced <strong>Economies of Scale</strong> — as his drone output grew, his <em>average cost per drone fell</em> because he could buy microchips in bulk and use specialised assembly frogs. This is a <strong>long-run phenomenon</strong> where ALL inputs are variable.
+        </div>
+        <span class="answer-label mint-label">🟢 Modern Industry Example</span>
+        <div class="answer-text">
+          Tech/semiconductor manufacturing (like TSMC or Samsung) — massive factories justify billions in fixed R&D costs, bulk raw material deals, and automation, driving cost-per-chip ever lower.
+        </div>
+        <span class="answer-label lilac-label">📈 Three Stages of the Long-Run Average Cost (LRAC) Curve</span>
+        <table class="data-table">
+          <thead>
+            <tr><th>Stage</th><th>LRAC Curve</th><th>What Happens</th><th>Keroppi's Journey</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="pill mint">1. Economies of Scale</span></td><td>📉 Slopes DOWN</td><td>Average cost <em>falls</em> as output rises — bulk buying, specialisation, better tech</td><td>Backyard → automated warehouse: cost per drone drops fast</td></tr>
+            <tr><td><span class="pill lemon">2. Constant Returns to Scale</span></td><td>➡️ FLAT</td><td>Average cost stays roughly the same — optimal scale reached</td><td>Mid-size operation: costs level off</td></tr>
+            <tr><td><span class="pill coral">3. Diseconomies of Scale</span></td><td>📈 Slopes UP</td><td>Average cost <em>rises</em> — management breakdowns, communication failures</td><td>If he grows too large: chaos, rising costs (exactly his worry!)</td></tr>
+          </tbody>
+        </table>
+        <div class="info-box sky">
+          <strong>🔑 Don't Confuse!</strong>
+          Diminishing Returns (short-run, one input varies) ≠ Diseconomies of Scale (long-run, ALL inputs scale up). They're different concepts!
+        </div>
+      </div>
+      <div class="quiz-area">
+        <div class="quiz-q">⚡ Which stage of the LRAC curve shows Economies of Scale?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this,'correct')">A) Downward-sloping section</button>
+          <button class="quiz-opt" onclick="answer(this,'wrong')">B) Flat section</button>
+          <button class="quiz-opt" onclick="answer(this,'wrong')">C) Upward-sloping section</button>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ CASE 2 -->
+<div class="case-section case-2" data-case="2">
+  <div class="case-header">
+    <span class="emoji">🫖🏍️</span>
+    <div>
+      <h2>My Melody's Café vs. Kuromi's BakuGo</h2>
+      <p>Market Structures · Monopoly · Behavioral Economics</p>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <div class="q-num">Q4</div>
+      <div class="q-title">Monopoly vs. Perfect Competition — My Melody's Tea Empire</div>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-section">
+        <div class="compare-grid">
+          <div class="compare-card left">
+            <h4>🫖 My Melody — Monopoly (Melody Tea)</h4>
+            <ul>
+              <li><strong>Price:</strong> Sets price above MC (price maker) — charges premium</li>
+              <li><strong>Output:</strong> Restricts output below socially optimal level</li>
+              <li><strong>Welfare:</strong> Creates <strong>deadweight loss</strong> — allocative inefficiency. Consumers pay more, get less.</li>
+              <li><strong>Barriers:</strong> Legal monopoly on pink tea leaves = high entry barrier</li>
+            </ul>
+          </div>
+          <div class="compare-card right">
+            <h4>🍰 Almond Pound Cake — Perfect Competition</h4>
+            <ul>
+              <li><strong>Price:</strong> Price = MC = minimum AC in long run (price taker)</li>
+              <li><strong>Output:</strong> Produces at socially optimal (efficient) level</li>
+              <li><strong>Welfare:</strong> <strong>No deadweight loss</strong> — allocatively and productively efficient</li>
+              <li><strong>Barriers:</strong> None — hundreds of identical bakeries, free entry/exit</li>
+            </ul>
+          </div>
+        </div>
+        <div class="info-box lilac">
+          <strong>Deadweight Loss Explained:</strong>
+          My Melody restricts supply of tea → price goes up → some consumers who <em>would have benefited</em> from tea at lower prices are now priced out. The value they could have received but didn't = deadweight loss (a welfare triangle on the supply/demand graph).
+        </div>
+      </div>
+      <div class="quiz-area">
+        <div class="quiz-q">⚡ In perfect competition, in the long run, price equals:</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this,'wrong')">A) Marginal Revenue only</button>
+          <button class="quiz-opt" onclick="answer(this,'correct')">B) Marginal Cost AND minimum Average Cost</button>
+          <button class="quiz-opt" onclick="answer(this,'wrong')">C) Average Fixed Cost</button>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q5 sub-a -->
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <div class="q-num">Q5a</div>
+      <div class="q-title">Monopolistic Competition — Real World Example</div>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-section">
+        <span class="answer-label lilac-label">🌍 Real-World Example</span>
+        <div class="info-box lilac">
+          <strong>Fast Food Industry</strong> (McDonald's, Burger King, KFC, etc.)
+          <br>Each sells slightly differentiated burgers but all compete for the same customers.
+        </div>
+        <span class="answer-label mint-label">Key Features vs. Pure Monopoly</span>
+        <table class="data-table">
+          <thead><tr><th>Feature</th><th>Monopolistic Competition</th><th>Pure Monopoly</th></tr></thead>
+          <tbody>
+            <tr><td>Number of Sellers</td><td>Many competing firms</td><td>Single seller</td></tr>
+            <tr><td>Product Differentiation</td><td>✅ Yes — each brand unique</td><td>N/A (no competitors)</td></tr>
+            <tr><td>Entry/Exit</td><td>✅ Relatively free (low barriers)</td><td>❌ Blocked by barriers</td></tr>
+            <tr><td>Long-run Profit</td><td>Normal (zero economic profit)</td><td>Can sustain supernormal</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q5 sub-b -->
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <div class="q-num">Q5b</div>
+      <div class="q-title">Behavioral Economics & Loss Aversion — Kuromi's BakuGo App</div>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-section">
+        <span class="answer-label coral-label">🧠 What is Behavioral Economics?</span>
+        <div class="info-box coral">
+          <strong>Behavioral Economics</strong> studies how psychological factors, cognitive biases, and emotions cause people to make decisions that deviate from the "perfectly rational" model of traditional economics. Key figures: Daniel Kahneman & Amos Tversky (Prospect Theory).
+        </div>
+        <span class="answer-label lilac-label">😨 The Specific Bias: Loss Aversion</span>
+        <div class="info-box lilac">
+          Kuromi frames the discount as: <em>"Don't lose your $5 early-bird discount!"</em>
+          <br><br>
+          This exploits <strong>Loss Aversion</strong> — people feel the pain of a potential loss roughly <strong>twice as intensely</strong> as the pleasure of an equivalent gain. Saying "lose $5" triggers a stronger emotional reaction than "save $5," even though the math is identical. This nudges users to book NOW rather than delay.
+        </div>
+        <span class="answer-label sky-label">📱 How BakuGo Uses Digital Consumer Behavior</span>
+        <table class="data-table">
+          <thead><tr><th>Technique</th><th>How It Works</th><th>Bias Exploited</th></tr></thead>
+          <tbody>
+            <tr><td>Algorithm tracks past rides</td><td>Offers "frequently travelled route" bundles on the home screen</td><td>Familiarity bias + convenience nudge</td></tr>
+            <tr><td>"Don't lose $5" framing</td><td>Triggers urgency via loss language</td><td>Loss Aversion</td></tr>
+            <tr><td>Personalised route suggestions</td><td>Reduces decision fatigue — users choose from curated options</td><td>Choice architecture / nudge</td></tr>
+            <tr><td>Early-bird countdown timers</td><td>Creates artificial scarcity and urgency</td><td>Scarcity heuristic + FOMO</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="quiz-area">
+        <div class="quiz-q">⚡ "Don't lose your $5 discount" triggers which bias?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this,'wrong')">A) Anchoring Bias</button>
+          <button class="quiz-opt" onclick="answer(this,'correct')">B) Loss Aversion</button>
+          <button class="quiz-opt" onclick="answer(this,'wrong')">C) Confirmation Bias</button>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ CASE 3 -->
+<div class="case-section case-3" data-case="3">
+  <div class="case-header">
+    <span class="emoji">☁️🍮</span>
+    <div>
+      <h2>Cinnamoroll's Global Café & Pompompurin</h2>
+      <p>Macroeconomics · Trade · Circular Economy</p>
+    </div>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <div class="q-num">Q6</div>
+      <div class="q-title">Phillips Curve, Stagflation & Policy Mix</div>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-section">
+        <span class="answer-label mint-label">📉 The Economic Curve</span>
+        <div class="info-box mint">
+          <strong>The Phillips Curve</strong> — shows the traditional inverse trade-off between <em>inflation</em> and <em>unemployment</em>. Lower unemployment → higher inflation; lower inflation → higher unemployment. Cinnamoroll's Central Bank fears fighting inflation (raising rates) will worsen unemployment, and vice versa.
+        </div>
+        <span class="answer-label coral-label">🔥 The Scenario: Stagflation</span>
+        <div class="info-box coral">
+          Cinnamoroll's economy has: <strong>High Inflation + Stagnant Growth + Rising Unemployment + High Debt</strong>. This is <strong>STAGFLATION</strong> — the worst combination because normal policy tools work against each other (cutting rates fights unemployment but worsens inflation; raising rates fights inflation but deepens recession).
+        </div>
+        <span class="answer-label lilac-label">🏛️ Optimal Policy Mix for Stagflation</span>
+        <table class="data-table">
+          <thead><tr><th>Policy</th><th>Action</th><th>Goal</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Monetary Policy</strong></td><td>Contractionary — raise interest rates, reduce money supply</td><td>Bring inflation DOWN first (priority)</td></tr>
+            <tr><td><strong>Fiscal Policy (Short-term)</strong></td><td>Contractionary — cut wasteful spending, reduce deficit to manage debt</td><td>Stabilise debt, avoid crowding out</td></tr>
+            <tr><td><strong>Fiscal Policy (Targeted)</strong></td><td>Selective supply-side spending: infrastructure, skills training, deregulation</td><td>Boost productive capacity WITHOUT fuelling demand inflation</td></tr>
+            <tr><td><strong>Structural Reform</strong></td><td>Reduce cost-push pressures (e.g. diversify espresso bean suppliers)</td><td>Attack the root supply shock</td></tr>
+          </tbody>
+        </table>
+        <div class="info-box sky">
+          The key insight: you cannot stimulate demand (which worsens inflation), but you <em>can</em> improve supply-side capacity. This is why stagflation is notoriously hard — standard Keynesian stimulus makes it worse.
+        </div>
+      </div>
+      <div class="quiz-area">
+        <div class="quiz-q">⚡ In stagflation, which monetary policy is most appropriate?</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this,'wrong')">A) Expansionary (cut rates)</button>
+          <button class="quiz-opt" onclick="answer(this,'correct')">B) Contractionary (raise rates)</button>
+          <button class="quiz-opt" onclick="answer(this,'wrong')">C) No monetary policy</button>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <div class="q-num">Q7</div>
+      <div class="q-title">Leading vs. Lagging Indicators — Pompompurin's Recession Watch</div>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-section">
+        <div class="compare-grid">
+          <div class="compare-card left">
+            <h4>🔮 Leading Indicators</h4>
+            <p><strong>Change BEFORE</strong> the economy turns — they <em>predict</em> future economic activity.</p>
+            <br>
+            <p><span class="pill mint">Building Permits ✅</span></p>
+            <p style="margin-top:.5rem">New building permits signal future construction activity and investment confidence. If permits fall, a slowdown is coming. Pompompurin watches these to <em>predict</em> recession before it hits.</p>
+          </div>
+          <div class="compare-card right">
+            <h4>📜 Lagging Indicators</h4>
+            <p><strong>Change AFTER</strong> the economy has already shifted — they <em>confirm</em> trends.</p>
+            <br>
+            <p><span class="pill lilac">Unemployment Rate ✅</span></p>
+            <p style="margin-top:.5rem">Unemployment is slow to move — firms delay hiring/firing. It confirms a recession has happened, but doesn't predict it. By the time unemployment rises sharply, the recession may already be underway.</p>
+          </div>
+        </div>
+        <div class="info-box lemon">
+          <strong>Memory Trick:</strong> Leading indicators <em>lead</em> you to what's coming (like a map). Lagging indicators confirm where you've already been (like a rearview mirror).
+        </div>
+      </div>
+      <div class="quiz-area">
+        <div class="quiz-q">⚡ New building permits are classified as:</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this,'correct')">A) Leading Indicator</button>
+          <button class="quiz-opt" onclick="answer(this,'wrong')">B) Lagging Indicator</button>
+          <button class="quiz-opt" onclick="answer(this,'wrong')">C) Coincident Indicator</button>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <div class="q-num">Q8</div>
+      <div class="q-title">Comparative Advantage & Currency Depreciation</div>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-section">
+        <span class="answer-label mint-label">🌍 Part A: Comparative Advantage (Fluffy Land & Berry Valley)</span>
+        <div class="info-box mint">
+          <strong>Comparative Advantage</strong> = produce what you give up the <em>least</em> to make (lowest opportunity cost) — even if one party is better at making EVERYTHING.
+        </div>
+        <div class="answer-text">
+          Example: Say Fluffy Land can make both mugs AND strawberries better than Berry Valley. But if Fluffy Land is <em>much</em> better at mugs and only <em>slightly</em> better at strawberries, its comparative advantage is still <strong>mugs</strong>. Berry Valley's comparative advantage is <strong>strawberries</strong>.
+          <br><br>
+          Result: Both specialise and trade → BOTH consume more than they could alone. This is why trade creates gains even when one party seems "better at everything."
+        </div>
+        <table class="data-table">
+          <thead><tr><th></th><th>Premium Mugs</th><th>Strawberries</th><th>Comparative Advantage</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Fluffy Land</strong></td><td>Very efficient</td><td>Moderately efficient</td><td>🏆 Mugs — specialise here</td></tr>
+            <tr><td><strong>Berry Valley</strong></td><td>Less efficient</td><td>Relatively better</td><td>🍓 Strawberries — specialise here</td></tr>
+          </tbody>
+        </table>
+
+        <span class="answer-label coral-label">💱 Part B: Currency Depreciation Effects</span>
+        <div class="info-box coral">
+          <strong>When Cinnamoroll's currency depreciates (loses value):</strong>
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Effect</th><th>Explanation</th><th>Impact on Café</th></tr></thead>
+          <tbody>
+            <tr><td>☕ <strong>Exports become cheaper</strong></td><td>Foreign buyers pay less in their currency for Cinnamoroll's café products</td><td>✅ Positive — exports increase</td></tr>
+            <tr><td>📦 <strong>Imports become more expensive</strong></td><td>Espresso beans bought from abroad now cost more in local currency</td><td>❌ Negative — input costs rise</td></tr>
+            <tr><td>📊 <strong>Trade Balance</strong></td><td>May improve over time (J-curve effect) if exports rise faster than import costs</td><td>Unclear short-term, better long-term</td></tr>
+            <tr><td>💰 <strong>Profitability</strong></td><td>Higher input costs squeeze margins unless export revenues compensate</td><td>⚠️ Profit pressure in short run</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="quiz-area">
+        <div class="quiz-q">⚡ Comparative advantage is based on:</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this,'wrong')">A) Absolute efficiency in production</button>
+          <button class="quiz-opt" onclick="answer(this,'correct')">B) Lowest opportunity cost of production</button>
+          <button class="quiz-opt" onclick="answer(this,'wrong')">C) Having the most resources</button>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="q-block">
+    <div class="q-header" onclick="toggle(this)">
+      <div class="q-num">Q9</div>
+      <div class="q-title">Circular Economy — Cinnamoroll Goes Green</div>
+      <span class="q-arrow">▼</span>
+    </div>
+    <div class="q-body">
+      <div class="answer-section">
+        <span class="answer-label mint-label">♻️ What is the Circular Economy?</span>
+        <div class="info-box mint">
+          <strong>Circular Economy</strong> contrasts with the traditional <em>"take-make-waste"</em> (linear) model. Instead, it aims to <strong>keep resources in use as long as possible</strong>, extract maximum value, then recover and regenerate products and materials at end of life.
+        </div>
+        <table class="data-table">
+          <thead><tr><th>Principle</th><th>What Cinnamoroll Does</th><th>Environmental Benefit</th></tr></thead>
+          <tbody>
+            <tr><td>♻️ <strong>Reduce Waste</strong></td><td>Reusable cups — no single-use plastic throwaway cups</td><td>Less landfill, reduced plastic pollution</td></tr>
+            <tr><td>🌱 <strong>Regenerate Resources</strong></td><td>Coffee grounds → fertilizer for farms</td><td>Nutrients returned to soil, reduces chemical fertiliser use</td></tr>
+            <tr><td>🔄 <strong>Closed Loop</strong></td><td>Waste from one process becomes input to another (coffee → fertilizer → crops → coffee beans)</td><td>Reduces total resource extraction</td></tr>
+            <tr><td>💚 <strong>Sustainability</strong></td><td>Aligns with long-term planet health, lowers carbon footprint</td><td>Addresses climate change</td></tr>
+          </tbody>
+        </table>
+        <div class="info-box sky">
+          <strong>Economic Angle:</strong> Circular economy also makes <em>business sense</em> — lower waste disposal costs, potential revenue from selling coffee-ground fertilizer, improved brand image attracting eco-conscious customers. Sustainability + profitability can go hand-in-hand!
+        </div>
+      </div>
+      <div class="quiz-area">
+        <div class="quiz-q">⚡ Converting coffee grounds into fertilizer is an example of:</div>
+        <div class="quiz-options">
+          <button class="quiz-opt" onclick="answer(this,'wrong')">A) Linear "take-make-waste" model</button>
+          <button class="quiz-opt" onclick="answer(this,'correct')">B) Circular economy (closed-loop resource use)</button>
+          <button class="quiz-opt" onclick="answer(this,'wrong')">C) Fiscal policy intervention</button>
+        </div>
+        <div class="quiz-feedback"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /content -->
+
+<!-- SOURCES -->
+<div class="sources-bar">
+  <details>
+    <summary>🌐 Internet Sources Found — Similar to These Case Studies</summary>
+    <a href="https://www.economicshelp.org/microessays/costs/diminishing-returns/" target="_blank">📘 Economics Help — Law of Diminishing Returns (bakery & café examples!)</a>
+    <a href="https://www.tutor2u.net/economics/reference/law-of-diminishing-returns-marginal-cost-and-average-variable-cost" target="_blank">📘 Tutor2U — Diminishing Returns linked to Marginal Cost</a>
+    <a href="https://courses.lumenlearning.com/wm-microeconomics/chapter/economies-of-scale/" target="_blank">📘 Lumen Learning — Economies of Scale & LRAC (similar warehouse example)</a>
+    <a href="https://www.renascence.io/journal/behavioral-economics-social-media-how-the-field-influences-platforms" target="_blank">📘 Renascence — Behavioral Economics in Digital Apps (very similar to BakuGo!)</a>
+    <a href="https://www.invesco.com/us/en/insights/what-is-stagflation-policymakers.html" target="_blank">📘 Invesco — Stagflation & Policy Trade-offs</a>
+    <a href="https://blogs.worldbank.org/en/voices/supply-solution-stagflation" target="_blank">📘 World Bank — Supply-Side Solutions to Stagflation</a>
+  </details>
+</div>
+
+<script>
+  // toggle accordion
+  function toggle(header) {
+    header.classList.toggle('open');
+    const body = header.nextElementSibling;
+    body.classList.toggle('open');
+  }
+
+  // quiz answers
+  function answer(btn, result) {
+    const opts = btn.parentElement.querySelectorAll('.quiz-opt');
+    opts.forEach(o => o.disabled = true);
+    btn.classList.add(result);
+    const fb = btn.closest('.quiz-area').querySelector('.quiz-feedback');
+    if (result === 'correct') {
+      fb.textContent = '✅ Correct! Well done!';
+      fb.style.color = '#1a6b67';
+    } else {
+      fb.textContent = '❌ Not quite — review the answer above and try to remember the key concept!';
+      fb.style.color = '#8b2500';
+    }
+  }
+
+  // filter tabs
+  function filterCase(caseId, btn) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.case-section').forEach(section => {
+      if (caseId === 'all' || section.dataset.case === caseId) {
+        section.classList.remove('hidden');
+      } else {
+        section.classList.add('hidden');
+      }
+    });
+  }
+
+  // search highlight
+  document.getElementById('searchInput').addEventListener('input', function() {
+    const term = this.value.trim().toLowerCase();
+    // remove existing marks
+    document.querySelectorAll('.content mark').forEach(m => {
+      m.outerHTML = m.innerHTML;
+    });
+    if (!term) return;
+    // walk text nodes
+    const walker = document.createTreeWalker(
+      document.querySelector('.content'),
+      NodeFilter.SHOW_TEXT,
+      null, false
+    );
+    const nodes = [];
+    while (walker.nextNode()) {
+      if (walker.currentNode.textContent.toLowerCase().includes(term)) {
+        nodes.push(walker.currentNode);
+      }
+    }
+    nodes.forEach(node => {
+      const regex = new RegExp(`(${term.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+      const span = document.createElement('span');
+      span.innerHTML = node.textContent.replace(regex, '<mark>$1</mark>');
+      node.parentNode.replaceChild(span, node);
+    });
+  });
+</script>
+</body>
+</html>
